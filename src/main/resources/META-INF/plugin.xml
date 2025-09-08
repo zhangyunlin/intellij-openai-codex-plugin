@@ -1,0 +1,34 @@
+<idea-plugin>
+  <id>com.example.intellij.openai</id>
+  <name>OpenAI Assistant</name>
+  <vendor email="you@example.com">You</vendor>
+  <version>0.1.0</version>
+
+  <description>
+    <![CDATA[
+    Minimal OpenAI integration for IntelliJ IDEA: query the model from the editor and a simple tool window.
+    Configure API key via environment variable OPENAI_API_KEY.
+    ]]>
+  </description>
+
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.java</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow id="OpenAI Assistant" anchor="right" factoryClass="com.example.openai.AIToolWindowFactory"/>
+  </extensions>
+
+  <actions>
+    <group id="OpenAI.Actions" text="OpenAI Assistant" description="OpenAI helper actions" popup="true">
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+      <action id="com.example.openai.AskAIAction"
+              class="com.example.openai.AskAIAction"
+              text="Ask OpenAI (Selection)"
+              description="Send selection and prompt to OpenAI">
+        <keyboard-shortcut keymap="Default" first-keystroke="alt shift C"/>
+      </action>
+    </group>
+  </actions>
+
+</idea-plugin>
+
